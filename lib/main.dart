@@ -1,19 +1,35 @@
 import 'package:bloc/bloc.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:whats_app/layout/cubit/cubit.dart';
 import 'package:whats_app/shared/bloc_observer.dart';
+import 'package:whats_app/shared/components/constants.dart';
+import 'package:whats_app/shared/network/local/cache_helper.dart';
 
 import 'modules/login/login_screen.dart';
 
-void main() {
+void main()async{
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  await CacheHelper.init();
   Bloc.observer = MyBlocObserver();
-  runApp(const MyApp());
+  Widget widget ;
+  uId = CacheHelper.getData(key: 'uId');
+  if(uId == '') {
+    widget = LoginScreen();
+  } else {
+    widget = WhatsLayout();
+  }
+  runApp(MyApp(
+    startWidget : widget,
+  )
+  );
 }
-
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
+  final Widget startWidget;
+  MyApp({
+    required this.startWidget,
+  });
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -21,7 +37,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const LoginScreen(),
+      home: startWidget,
     );
   }
 }

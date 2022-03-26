@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 Widget defaultTextFormField({
   required TextEditingController controller,
@@ -8,12 +9,8 @@ Widget defaultTextFormField({
   IconData? suffixIcon ,
   required TextInputType keyboard,
   bool security = false,
-  Function? onchange,
   required Function validator,
   Function? suffixPressed,
-  Function? onTap,
-  TextInputAction? textInputAction,
-  Function? onSubmitted,
 }){
   return  Padding(
     padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -21,7 +18,6 @@ Widget defaultTextFormField({
       style: const TextStyle(
         color: Colors.white,
       ),
-      textInputAction: textInputAction,
       decoration:    InputDecoration(
         enabledBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: Colors.grey),
@@ -62,16 +58,35 @@ Widget defaultTextFormField({
       validator: (value) {
         validator(value);
       },
-      onChanged: (value){
-        onchange!(value);
-      },
-      onFieldSubmitted: (String? value){
-        onSubmitted!(value);
-      },
       keyboardType: keyboard,
-      onTap: () {
-        onTap!();
-      },
     ),
   );
+}
+
+void showToast({required String txt, required ToastState state}) {
+  Fluttertoast.showToast(
+      msg: txt,
+      toastLength: Toast.LENGTH_LONG,
+      gravity: ToastGravity.BOTTOM,
+      timeInSecForIosWeb: 5,
+      backgroundColor: chooseToastColor(state),
+      textColor: Colors.white,
+      fontSize: 16.0);
+}
+
+enum ToastState { SUCCESS, ERROR, WRONG }
+late Color color;
+Color chooseToastColor(ToastState state) {
+  switch (state) {
+    case ToastState.SUCCESS:
+      color = Colors.green;
+      break;
+    case ToastState.ERROR:
+      color = Colors.red;
+      break;
+    case ToastState.WRONG:
+      color = Colors.amber;
+      break;
+  }
+  return color;
 }

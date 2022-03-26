@@ -1,6 +1,12 @@
 abstract class RegisterStates{}
-class InitRegister extends RegisterStates{}
-class SocialCreateUserSuccess extends RegisterStates{}
+class RegisterInit extends RegisterStates{}
+class ChangeSecure extends RegisterStates{}
+
+class SocialCreateUserSuccess extends RegisterStates{
+  final String uId;
+
+  SocialCreateUserSuccess(this.uId);
+}
 class SocialCreateUserError extends RegisterStates{}
 
 class WhatsRegisterLoading extends RegisterStates{}
