@@ -41,7 +41,7 @@ dependencies:
   shared_preferences: ^2.0.13
   buildcondition: ^0.0.4
 
-  #
+  #Flutter firebase
   firebase_core: ^1.13.1
   firebase_auth: ^3.3.11
   cloud_firestore: ^3.1.10

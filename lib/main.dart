@@ -6,25 +6,26 @@ import 'package:whats_app/shared/bloc_observer.dart';
 import 'package:whats_app/shared/components/constants.dart';
 import 'package:whats_app/shared/network/local/cache_helper.dart';
 
+import 'layout/whats_layout.dart';
 import 'modules/login/login_screen.dart';
 
-void main()async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await CacheHelper.init();
   Bloc.observer = MyBlocObserver();
-  Widget widget ;
+  Widget widget;
   uId = CacheHelper.getData(key: 'uId');
-  if(uId == '') {
+  if (uId == '') {
     widget = LoginScreen();
   } else {
     widget = WhatsLayout();
   }
   runApp(MyApp(
-    startWidget : widget,
-  )
-  );
+    startWidget: widget,
+  ));
 }
+
 class MyApp extends StatelessWidget {
   final Widget startWidget;
   MyApp({
@@ -33,11 +34,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'WhatsApp',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: startWidget,
+      home: const Whats_App(),
     );
   }
 }
