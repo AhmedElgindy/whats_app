@@ -19,7 +19,7 @@ class _Whats_AppState extends State<Whats_App> {
           actions: [
             IconButton(
                 onPressed: () {},
-                icon: Icon(
+                icon: const Icon(
                   Icons.search_rounded,
                 )),
             IconButton(
