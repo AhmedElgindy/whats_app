@@ -7,6 +7,7 @@ import 'package:whats_app/modules/login/cubit/cubit.dart';
 import 'package:whats_app/modules/login/cubit/states.dart';
 import 'package:whats_app/shared/components/constants.dart';
 import 'package:whats_app/shared/style/colors.dart';
+import '../../layout/whats_layout.dart';
 import '../../shared/components/components.dart';
 import '../../shared/components/constants.dart';
 import '../../shared/network/local/cache_helper.dart';
@@ -29,7 +30,7 @@ class LoginScreen extends StatelessWidget {
           if(state is WhatsLoginSuccess){
             CacheHelper.saveData(key: 'uId', value: state.uId).then((value) {
               print(state.uId);
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>WhatsLayout()));
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const WhatsLayout()));
             });
           }
         },

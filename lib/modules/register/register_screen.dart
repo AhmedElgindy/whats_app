@@ -8,6 +8,7 @@ import 'package:whats_app/modules/register/cubit/cubit.dart';
 import 'package:whats_app/modules/register/cubit/states.dart';
 import 'package:whats_app/shared/style/colors.dart';
 
+import '../../layout/whats_layout.dart';
 import '../../shared/components/components.dart';
 import '../../shared/network/local/cache_helper.dart';
 
@@ -27,7 +28,7 @@ class RegisterScreen extends StatelessWidget {
             CacheHelper.saveData(key: 'uId', value: state.uId).then((value) {
               print(state.uId);
               Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => WhatsLayout()));
+                  MaterialPageRoute(builder: (context) => const WhatsLayout()));
             });
           }
         },
