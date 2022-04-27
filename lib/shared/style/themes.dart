@@ -1,4 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
+
+ThemeData normalMode = ThemeData(
+  primaryColor: Colors.green,
+  scaffoldBackgroundColor: HexColor('#001313'),
+  appBarTheme: AppBarTheme(
+    backgroundColor: HexColor('#06141A'),
+  ),
+);
 
 ThemeData darkMode = ThemeData(
   appBarTheme: const AppBarTheme(

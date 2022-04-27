@@ -6,15 +6,17 @@ import 'package:whats_app/modules/chats/chats_screen.dart';
 import 'package:whats_app/modules/personal/personal_screen.dart';
 import 'package:whats_app/modules/status/status_screen.dart';
 
-class WhatsCubit extends Cubit<WhatsStates>{
+class WhatsCubit extends Cubit<WhatsStates> {
   WhatsCubit() : super(WhatsInit());
-  static WhatsCubit get(context) =>BlocProvider.of(context);
-  int currentIndex =0;
-  void changeBottomNav(int index){
+  static WhatsCubit get(context) => BlocProvider.of(context);
+  //index for changing page state
+  int currentIndex = 0;
+  void changeBottomNav(int index) {
     currentIndex = index;
     emit(ChangeBottomNav());
   }
-  List<Widget>screen =const [
+
+  List<Widget> screen = const [
     ChatsScreen(),
     StatusScreen(),
     PersonalScreen(),

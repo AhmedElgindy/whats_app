@@ -1,4 +1,16 @@
-class UserModel{
+//obj for chat content
+
+import 'package:flutter/widgets.dart';
+
+class ChatContent {
+  String name;
+  String message;
+  String time;
+  String image;
+  ChatContent(this.name, this.message, this.time, this.image);
+}
+
+class UserModel {
   String? name;
   String? phone;
   String? uId;
@@ -14,22 +26,22 @@ class UserModel{
     this.image,
     this.bio,
   });
-  UserModel.fromJson(Map<String,dynamic>json){
-    email=json['email'];
-    phone=json['phone'];
-    uId=json['uId'];
-    name=json['name'];
-    image =json['image'];
+  UserModel.fromJson(Map<String, dynamic> json) {
+    email = json['email'];
+    phone = json['phone'];
+    uId = json['uId'];
+    name = json['name'];
+    image = json['image'];
     bio = json['bio'];
   }
-  Map<String,dynamic>toMap(){
-    return{
-      'name':name,
-      'email':email,
-      'phone':phone,
-      'uId':uId,
-      'image':image,
-      'bio':bio,
+  Map<String, dynamic> toMap() {
+    return {
+      'name': name,
+      'email': email,
+      'phone': phone,
+      'uId': uId,
+      'image': image,
+      'bio': bio,
     };
   }
 }
