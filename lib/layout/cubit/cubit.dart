@@ -1,10 +1,15 @@
 import 'package:bloc/bloc.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:whats_app/layout/cubit/states.dart';
+import 'package:whats_app/models/user_model.dart';
 import 'package:whats_app/modules/chats/chats_screen.dart';
-import 'package:whats_app/modules/personal/personal_screen.dart';
 import 'package:whats_app/modules/status/status_screen.dart';
+import 'package:whats_app/shared/components/constants.dart';
+
+import '../../modules/profile/personal_screen.dart';
 
 class WhatsCubit extends Cubit<WhatsStates> {
   WhatsCubit() : super(WhatsInit());
@@ -19,6 +24,23 @@ class WhatsCubit extends Cubit<WhatsStates> {
   List<Widget> screen = const [
     ChatsScreen(),
     StatusScreen(),
-    PersonalScreen(),
+    ProfileScreen(),
   ];
+
+  // GetUserData
+  UserModel? userModel;
+  void getUserData(){
+    emit(GetUserDataLoading());
+    FirebaseFirestore.instance
+        .collection('users')
+        .doc(uId)
+        .get()
+        .then((value){
+          userModel = UserModel.fromJson(value.data()!);
+          emit(GetUserDataSuccess());
+    })
+        .catchError((error){
+          emit(GetUserDataError());
+    });
+  }
 }

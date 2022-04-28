@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class PersonalScreen extends StatelessWidget {
-  const PersonalScreen({Key? key}) : super(key: key);
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +10,7 @@ class PersonalScreen extends StatelessWidget {
       children: const [
         Center(
           child: Text(
-              'PersonalScreen',
+              'ProfileScreen',
             style: TextStyle(
               color: Colors.white,
               fontSize: 30,
