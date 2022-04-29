@@ -20,7 +20,8 @@ Widget defaultTextFormField({
       ),
       decoration:    InputDecoration(
         enabledBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.grey),
+          borderSide: BorderSide(color: Colors.grey,),
+
         ),
 
         focusedBorder: const OutlineInputBorder(

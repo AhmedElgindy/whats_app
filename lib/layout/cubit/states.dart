@@ -6,3 +6,12 @@
  class GetUserDataLoading extends WhatsStates{}
  class GetUserDataSuccess extends WhatsStates{}
  class GetUserDataError extends WhatsStates{}
+
+ // ProfileImage
+ class SocialProfileImagePickedSuccessState extends WhatsStates{}
+ class SocialProfileImagePickedErrorState extends WhatsStates{}
+
+ // EditProfile
+ class SocialUpdateProfileLoadingState extends WhatsStates{}
+ class SocialUpdateProfileErrorState extends WhatsStates{}
+

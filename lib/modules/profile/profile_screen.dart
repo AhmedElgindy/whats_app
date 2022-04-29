@@ -8,8 +8,7 @@ import 'package:whats_app/modules/edit_profile/edit_profile_screen.dart';
 import '../../shared/style/colors.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
-
+   const ProfileScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<WhatsCubit,WhatsStates>(
@@ -176,7 +175,7 @@ class ProfileScreen extends StatelessWidget {
                           onPressed: (){
                             Navigator.push(context,
                                 MaterialPageRoute(
-                                  builder: (context)=> const EditProfileScreen(),
+                                  builder: (context)=>  EditProfileScreen(),
                                 )
                             );
                           },
