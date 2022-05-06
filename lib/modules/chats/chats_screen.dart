@@ -1,8 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:whats_app/shared/style/themes.dart';
 
 import '../../shared/components/constants.dart';
+import 'chat_content_screen.dart';
 
 class ChatsScreen extends StatelessWidget {
   const ChatsScreen({Key? key}) : super(key: key);
@@ -20,9 +20,15 @@ class ChatsScreen extends StatelessWidget {
                   height: 15,
                 ),
                 ListTile(
-                  leading: const CircleAvatar(
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ChatContentScreen(
+                                index: index,
+                              ))),
+                  leading: CircleAvatar(
                     backgroundColor: Colors.grey,
-                    backgroundImage: AssetImage('assets/images/talk.jpg'),
+                    backgroundImage: dummyData[index].image,
                   ),
                   title: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,

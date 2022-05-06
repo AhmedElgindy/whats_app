@@ -21,7 +21,7 @@ void main() async {
   if (uId == '') {
     widget = LoginScreen();
   } else {
-    widget = WhatsLayout();
+    widget = const WhatsLayout();
   }
   runApp(MyApp(
     startWidget: widget,
@@ -36,17 +36,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context)=>WhatsCubit(),
-      child: BlocConsumer<WhatsCubit,WhatsStates>(
-        listener: (context,state){},
-        builder: (context,state){
+      create: (BuildContext context) => WhatsCubit(),
+      child: BlocConsumer<WhatsCubit, WhatsStates>(
+        listener: (context, state) {},
+        builder: (context, state) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'WhatsApp',
             theme: ThemeData(
               primarySwatch: Colors.blue,
             ),
-            home:  startWidget,
+            home: startWidget,
           );
         },
       ),
