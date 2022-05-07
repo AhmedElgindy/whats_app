@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:whats_app/shared/components/constants.dart';
 import 'package:whats_app/shared/style/themes.dart';
 
+import '../../shared/style/colors.dart';
 import 'bottom_send_navigation.dart';
 
 class ChatContentScreen extends StatelessWidget {
@@ -14,11 +15,14 @@ class ChatContentScreen extends StatelessWidget {
       data: normalMode,
       child: Scaffold(
         appBar: AppBar(
-          elevation: 0,
+          elevation: 5,
           leading: Padding(
-            padding: const EdgeInsets.only(left: 10),
+            padding: const EdgeInsets.only(left: 5),
             child: IconButton(
-              icon: const Icon(Icons.arrow_back_rounded),
+              icon: Icon(
+                Icons.arrow_back_ios_rounded,
+                color: defaultColor.withOpacity(0.5),
+              ),
               onPressed: () => Navigator.pop(context),
             ),
           ),
@@ -35,22 +39,24 @@ class ChatContentScreen extends StatelessWidget {
               const SizedBox(
                 width: 10,
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    dummyData[index].name,
-                    style: const TextStyle(fontSize: 16),
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        "Active Now",
-                        style: TextStyle(fontSize: 12, color: Colors.grey),
-                      )
-                    ],
-                  ),
-                ],
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      dummyData[index].name,
+                      style: const TextStyle(fontSize: 16),
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          "Active Now",
+                          style: TextStyle(fontSize: 12, color: Colors.grey),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
               )
             ],
           ),

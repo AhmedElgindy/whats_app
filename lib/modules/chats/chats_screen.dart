@@ -48,7 +48,7 @@ class ChatsScreen extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 5),
                     child: Text(
                       dummyData[index].message,
-                      style: const TextStyle(color: Colors.white),
+                      style:  TextStyle(color: Colors.grey[400]),
                     ),
                   ),
                 )

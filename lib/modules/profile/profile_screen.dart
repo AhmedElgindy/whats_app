@@ -15,7 +15,7 @@ class ProfileScreen extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         return BuildCondition(
-          condition: state is GetUserDataLoading,
+          condition: state is! GetUserDataLoading,
           builder: (context) => Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 55),
             child: Column(
