@@ -23,7 +23,8 @@ void main() async {
   } else {
     widget = const WhatsLayout();
   }
-  runApp(MyApp(
+  runApp(
+      MyApp(
     startWidget: widget,
   ));
 }
