@@ -1,4 +1,4 @@
-#Sun May 08 17:53:00 EET 2022
+#Tue May 10 22:33:11 EET 2022
 base.2=E\:\\Flutter 2022\\whats_app\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes3.dex
 path.2=classes3.dex
 base.1=E\:\\Flutter 2022\\whats_app\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes2.dex
