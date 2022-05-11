@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:whats_app/layout/cubit/cubit.dart';
 import 'package:whats_app/layout/cubit/states.dart';
+import 'package:whats_app/modules/create_status/create_status.dart';
 import 'package:whats_app/shared/style/colors.dart';
 import 'package:whats_app/shared/style/themes.dart';
 
@@ -88,7 +89,14 @@ class WhatsLayout extends StatelessWidget {
             ),
             floatingActionButton:WhatsCubit.get(context).currentIndex ==1?
             FloatingActionButton(
-                onPressed: (){},
+                onPressed: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context)=>const CreateStatus(),
+                    ),
+                  );
+                },
               backgroundColor: defaultColor,
               child: const Icon(
                 Icons.add,

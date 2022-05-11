@@ -10,6 +10,7 @@ class StatusScreen extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 16,top:25),
       child: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         child: Column(
           children:  [
             InkWell(
