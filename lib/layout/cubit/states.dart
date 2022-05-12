@@ -15,3 +15,7 @@
  class SocialUpdateProfileLoadingState extends WhatsStates{}
  class SocialUpdateProfileErrorState extends WhatsStates{}
 
+ // StatusImage
+ class SocialStatusImagePickedSuccessState extends WhatsStates{}
+ class SocialStatusImagePickedErrorState extends WhatsStates{}
+ class SocialRemoveStatusImageState extends WhatsStates{}
