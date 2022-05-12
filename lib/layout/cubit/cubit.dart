@@ -113,4 +113,21 @@ class WhatsCubit extends Cubit<WhatsStates> {
     });
   }
 
+  // Status
+  File? statusImage ;
+  Future<void> getStatusImage() async {
+    final pickedFile = await picker.pickImage(
+      source: ImageSource.gallery,
+    );
+    if (pickedFile != null) {
+      statusImage = File(pickedFile.path);
+      emit(SocialStatusImagePickedSuccessState());
+    } else {
+      emit(SocialStatusImagePickedErrorState());
+    }
+  }
+  void removePostImage(){
+    statusImage =null;
+    emit(SocialRemoveStatusImageState());
+  }
 }

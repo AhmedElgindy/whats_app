@@ -1,0 +1,6 @@
+io/flutter/plugins/GeneratedPluginRegistrant.java
+ io.flutter.plugins.GeneratedPluginRegistrant
+com/example/whats_app/BuildConfig.java
+ com.example.whats_app.BuildConfig
+com/example/whats_app/MainActivity.java
+ com.example.whats_app.MainActivity

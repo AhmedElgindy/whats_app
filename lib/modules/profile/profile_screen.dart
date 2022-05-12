@@ -8,18 +8,18 @@ import 'package:whats_app/modules/edit_profile/edit_profile_screen.dart';
 import '../../shared/style/colors.dart';
 
 class ProfileScreen extends StatelessWidget {
-   const ProfileScreen({Key? key}) : super(key: key);
+  const ProfileScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<WhatsCubit,WhatsStates>(
-      listener: (context,state){},
-      builder: (context,state){
+    return BlocConsumer<WhatsCubit, WhatsStates>(
+      listener: (context, state) {},
+      builder: (context, state) {
         return BuildCondition(
           condition: state is! GetUserDataLoading,
-          builder: (context)=>Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 55),
+          builder: (context) => Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 55),
             child: Column(
-              children:  [
+              children: [
                 Align(
                   alignment: Alignment.topCenter,
                   child: CircleAvatar(
@@ -28,8 +28,7 @@ class ProfileScreen extends StatelessWidget {
                     child: CircleAvatar(
                       radius: 62,
                       backgroundImage: NetworkImage(
-                          '${WhatsCubit.get(context).userModel!.image}'
-                      ),
+                          '${WhatsCubit.get(context).userModel!.image}'),
                     ),
                   ),
                 ),
@@ -48,13 +47,12 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children:   [
+                      children: [
                         const Text(
                           'Name',
                           style: TextStyle(
                             color: Colors.grey,
                             fontSize: 15,
-
                           ),
                         ),
                         const SizedBox(
@@ -73,7 +71,7 @@ class ProfileScreen extends StatelessWidget {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 56,bottom:  20,top: 20),
+                  padding: const EdgeInsets.only(left: 56, bottom: 20, top: 20),
                   child: Container(
                     width: double.infinity,
                     height: 1,
@@ -92,13 +90,12 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children:   [
+                      children: [
                         const Text(
                           'About',
                           style: TextStyle(
                             color: Colors.grey,
                             fontSize: 15,
-
                           ),
                         ),
                         const SizedBox(
@@ -117,7 +114,7 @@ class ProfileScreen extends StatelessWidget {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 56,bottom:  20,top: 20),
+                  padding: const EdgeInsets.only(left: 56, bottom: 20, top: 20),
                   child: Container(
                     width: double.infinity,
                     height: 1,
@@ -136,13 +133,12 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children:   [
+                      children: [
                         const Text(
                           'Phone',
                           style: TextStyle(
                             color: Colors.grey,
                             fontSize: 15,
-
                           ),
                         ),
                         const SizedBox(
@@ -166,31 +162,30 @@ class ProfileScreen extends StatelessWidget {
                     Expanded(
                       child: OutlinedButton(
                           style: ButtonStyle(
-                              side: MaterialStateProperty.all(
-                                  BorderSide(
-                                    color: Colors.green.withOpacity(0.2),
-                                  )
-                              )
-                          ),
-                          onPressed: (){
-                            Navigator.push(context,
+                              side: MaterialStateProperty.all(BorderSide(
+                            color: Colors.green.withOpacity(0.2),
+                          ))),
+                          onPressed: () {
+                            Navigator.push(
+                                context,
                                 MaterialPageRoute(
-                                  builder: (context)=>  EditProfileScreen(),
-                                )
-                            );
+                                  builder: (context) => EditProfileScreen(),
+                                ));
                           },
                           child: const Icon(
                             Icons.edit_outlined,
                             color: Colors.white,
-                          )
-                      ),
+                          )),
                     ),
                   ],
                 ),
               ],
             ),
           ),
-          fallback: (context)=>const Center(child:  CircularProgressIndicator(backgroundColor: defaultColor,)),
+          fallback: (context) => const Center(
+              child: CircularProgressIndicator(
+            backgroundColor: defaultColor,
+          )),
         );
       },
     );

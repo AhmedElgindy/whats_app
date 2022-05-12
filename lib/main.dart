@@ -23,28 +23,29 @@ void main() async {
   } else {
     widget = const WhatsLayout();
   }
-  runApp(MyApp(
+  runApp(
+      MyApp(
     startWidget: widget,
   ));
 }
 
 class MyApp extends StatelessWidget {
   final Widget startWidget;
-   MyApp({
+  MyApp({
     required this.startWidget,
   });
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context)=>WhatsCubit()..getUserData(),
-      child: BlocConsumer<WhatsCubit,WhatsStates>(
-        listener: (context,state){},
-        builder: (context,state){
+      create: (BuildContext context) => WhatsCubit()..getUserData(),
+      child: BlocConsumer<WhatsCubit, WhatsStates>(
+        listener: (context, state) {},
+        builder: (context, state) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'WhatsApp',
             theme: normalMode,
-            home:  startWidget,
+            home: startWidget,
           );
         },
       ),
