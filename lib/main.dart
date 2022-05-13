@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) => WhatsCubit()..getUserData(),
+      create: (BuildContext context) => WhatsCubit()..getUserData()..getStatus(),
       child: BlocConsumer<WhatsCubit, WhatsStates>(
         listener: (context, state) {},
         builder: (context, state) {

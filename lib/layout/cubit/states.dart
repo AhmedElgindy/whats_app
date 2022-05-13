@@ -19,3 +19,14 @@
  class SocialStatusImagePickedSuccessState extends WhatsStates{}
  class SocialStatusImagePickedErrorState extends WhatsStates{}
  class SocialRemoveStatusImageState extends WhatsStates{}
+ class SocialUpdateStatusImageLoadingState extends WhatsStates{}
+ class SocialUpdateStatusImageErrorState extends WhatsStates{}
+
+ // Status
+ class SocialCreateStatusLoadingState extends WhatsStates{}
+ class SocialCreateStatusErrorState extends WhatsStates{}
+ class SocialCreateStatusSuccessState extends WhatsStates{}
+ // getStatus
+ class SocialGetStatusLoadingState extends WhatsStates{}
+ class SocialGetStatusErrorState extends WhatsStates{}
+ class SocialGetStatusSuccessState extends WhatsStates{}

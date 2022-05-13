@@ -42,6 +42,7 @@ dependencies:
   buildcondition: ^0.0.4
   circle_nav_bar: ^1.0.2
   image_picker: ^0.8.5
+  date_time: ^0.6.0
 
   #Flutter firebase
   firebase_core: ^1.13.1

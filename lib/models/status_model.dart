@@ -5,6 +5,8 @@ class StatusModel{
   String? dateTime;
   String? statusImage;
   String? text;
+  int? day;
+  String? time;
 
   StatusModel({
     this.uId,
@@ -13,6 +15,8 @@ class StatusModel{
     this.image,
     this.text,
     this.dateTime,
+    this.day,
+    this.time
   });
   StatusModel.fromJson(Map<String,dynamic>json){
     statusImage=json['statusImage'];
@@ -21,6 +25,8 @@ class StatusModel{
     name=json['name'];
     dateTime = json['dateTime'];
     image =json['image'];
+    day =json['day'];
+    time =json['time'];
   }
   Map<String,dynamic>toMap(){
     return{
@@ -30,6 +36,8 @@ class StatusModel{
       'uId':uId,
       'statusImage':statusImage,
       'image':image,
+      'day':day,
+      'time':time,
     };
   }
 }
