@@ -8,34 +8,29 @@ class StatusScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 16,top:25),
+      padding: const EdgeInsets.only(left: 16, top: 25),
       child: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Column(
-          children:  [
+          children: [
             InkWell(
-              onTap: (){
+              onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (context)=>StatusDetails()
-                  ),
+                  MaterialPageRoute(builder: (context) => StatusDetails()),
                 );
               },
               child: Row(
-                children:  [
+                children: [
                   const CircleAvatar(
-                    radius: 28,
-                    backgroundImage: NetworkImage(
-                        'https://t3.ftcdn.net/jpg/03/01/94/34/240_F_301943459_hZqG7C4F3nnACx811k2CwS4YfomRT1n1.jpg',
-                  ),
-                  ),
+                      radius: 28,
+                      backgroundImage: AssetImage('assets/images/talk2.jpg')),
                   const SizedBox(
                     width: 10,
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children:  const [
+                    children: const [
                       Text(
                         'Mohammed Ashraf',
                         style: TextStyle(
@@ -61,7 +56,8 @@ class StatusScreen extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 5,right: 15,top: 10,bottom: 20),
+              padding: const EdgeInsets.only(
+                  left: 5, right: 15, top: 10, bottom: 20),
               child: Container(
                 width: double.infinity,
                 height: 1,
@@ -71,40 +67,38 @@ class StatusScreen extends StatelessWidget {
             ListView.separated(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
-                itemBuilder:(context, index) => status(context) ,
-                separatorBuilder:(context,index)=>  SizedBox(height: 20,),
-                itemCount: 10,
+              itemBuilder: (context, index) => status(context),
+              separatorBuilder: (context, index) => SizedBox(
+                height: 20,
+              ),
+              itemCount: 10,
             ),
           ],
         ),
       ),
     );
-
   }
-  Widget status(context){
+
+  Widget status(context) {
     return InkWell(
-      onTap: (){
+      onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(
-              builder: (context)=>StatusDetails()
-          ),
+          MaterialPageRoute(builder: (context) => StatusDetails()),
         );
       },
       child: Row(
-        children:  [
+        children: [
           const CircleAvatar(
             radius: 28,
-            backgroundImage: NetworkImage(
-              'https://t3.ftcdn.net/jpg/03/01/94/34/240_F_301943459_hZqG7C4F3nnACx811k2CwS4YfomRT1n1.jpg',
-            ),
+            backgroundImage: AssetImage('assets/images/talk2.jpg'),
           ),
           const SizedBox(
             width: 10,
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children:  const [
+            children: const [
               Text(
                 'Mohammed Ashraf',
                 style: TextStyle(
