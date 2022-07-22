@@ -11,6 +11,38 @@ class StatusScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
+    return Padding(
+      padding: const EdgeInsets.only(left: 16, top: 25),
+      child: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        child: Column(
+          children: [
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => StatusDetails()),
+                );
+              },
+              child: Row(
+                children: [
+                  const CircleAvatar(
+                      radius: 28,
+                      backgroundImage: AssetImage('assets/images/talk2.jpg')),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      Text(
+                        'Mohammed Ashraf',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+=======
     return BlocConsumer<WhatsCubit,WhatsStates>(
       listener: (context,state){},
       builder: (context,state){
@@ -35,6 +67,7 @@ class StatusScreen extends StatelessWidget {
                           width: double.infinity,
                           height: 1,
                           color: Colors.green.withOpacity(0.1),
+>>>>>>> master
                         ),
                       ),
                       itemCount: WhatsCubit.get(context).status.length,
@@ -60,6 +93,30 @@ class StatusScreen extends StatelessWidget {
                   ],
                 ),
               ),
+<<<<<<< HEAD
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                  left: 5, right: 15, top: 10, bottom: 20),
+              child: Container(
+                width: double.infinity,
+                height: 1,
+                color: Colors.green.withOpacity(0.1),
+              ),
+            ),
+            ListView.separated(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemBuilder: (context, index) => status(context),
+              separatorBuilder: (context, index) => SizedBox(
+                height: 20,
+              ),
+              itemCount: 10,
+            ),
+          ],
+        ),
+      ),
+=======
             );
           },
           fallback: (context){
@@ -76,9 +133,25 @@ class StatusScreen extends StatelessWidget {
           },
         );
       },
+>>>>>>> master
     );
-
   }
+<<<<<<< HEAD
+
+  Widget status(context) {
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => StatusDetails()),
+        );
+      },
+      child: Row(
+        children: [
+          const CircleAvatar(
+            radius: 28,
+            backgroundImage: AssetImage('assets/images/talk2.jpg'),
+=======
   Widget status(context,index){
     return WhatsCubit.get(context).status[index].uId==WhatsCubit.get(context).userModel!.uId? InkWell(
       onTap: (){
@@ -103,13 +176,18 @@ class StatusScreen extends StatelessWidget {
             backgroundImage: NetworkImage(
               '${WhatsCubit.get(context).status[index].image}',
             ),
+>>>>>>> master
           ),
           const SizedBox(
             width: 10,
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+<<<<<<< HEAD
+            children: const [
+=======
             children:   [
+>>>>>>> master
               Text(
                 '${WhatsCubit.get(context).status[index].name}',
                 style: const TextStyle(
