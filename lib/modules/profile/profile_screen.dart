@@ -18,14 +18,23 @@ class ProfileScreen extends StatelessWidget {
           condition: state is! GetUserDataLoading,
           builder: (context) => Column(
             children: [
+<<<<<<< HEAD
               const Align(
+=======
+              Align(
+>>>>>>> master
                 alignment: Alignment.topCenter,
                 child: CircleAvatar(
                   radius: 64,
                   backgroundColor: Colors.white,
                   child: CircleAvatar(
                     radius: 62,
+<<<<<<< HEAD
                     backgroundImage: AssetImage('assets/images/talk2.jpg'),
+=======
+                    backgroundImage: NetworkImage(
+                        '${WhatsCubit.get(context).userModel!.image}'),
+>>>>>>> master
                   ),
                 ),
               ),
@@ -153,6 +162,7 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 ],
               ),
+<<<<<<< HEAD
               const Spacer(),
               Row(
                 children: [
@@ -177,6 +187,8 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 ],
               ),
+=======
+>>>>>>> master
             ],
           ),
           fallback: (context) => const Center(

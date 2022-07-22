@@ -1,3 +1,4 @@
+import 'package:date_time/date_time.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:whats_app/layout/cubit/cubit.dart';
@@ -12,8 +13,15 @@ class CreateStatus extends StatelessWidget {
   Widget build(BuildContext context) {
     var textController = TextEditingController();
     return BlocConsumer<WhatsCubit,WhatsStates>(
-      listener: (context,state){},
+      listener: (context,state){
+        if(state is SocialCreateStatusSuccessState) {
+          Navigator.pop(context);
+        }
+      },
       builder: (context,state){
+        final dateTime = DateTime.now();
+        final date = dateTime.date;
+        final time = dateTime.time;
         return Scaffold(
           appBar: AppBar(
             leading: IconButton(
@@ -34,7 +42,25 @@ class CreateStatus extends StatelessWidget {
             ),
             actions: [
               TextButton(
-                  onPressed: (){},
+                  onPressed: (){
+                    if(WhatsCubit.get(context).statusImage == null){
+                      WhatsCubit.get(context).createStatus(
+                          text: textController.text,
+                          dateTime: date.toString(),
+                          time: time.toString(),
+                          day: dateTime.day,
+                      );
+                    }
+                    else{
+                      WhatsCubit.get(context).uploadStatusImage(
+                        text: textController.text,
+                        dateTime: date.toString(),
+                        time: time.toString(),
+                        day: dateTime.day,
+
+                      );
+                    }
+                  },
                   child: Text(
                     'Add',
                     style: TextStyle(
@@ -54,21 +80,27 @@ class CreateStatus extends StatelessWidget {
             SingleChildScrollView(
               child: Column(
                 children: [
+                  if(state is SocialCreateStatusLoadingState)
+                    LinearProgressIndicator(color: defaultColor,backgroundColor: defaultColor[100]),
+                  if(state is SocialCreateStatusLoadingState)
+                    const SizedBox(
+                      height: 10,
+                    ),
                   Row(
-                    children: const [
+                    children:  [
                       CircleAvatar(
                         radius: 25.0,
                         backgroundImage: NetworkImage(
-                          'https://firebasestorage.googleapis.com/v0/b/whatsapp-5d984.appspot.com/o/users%2Fimage_picker5601193744695634156.jpg?alt=media&token=626db624-5231-444d-8384-7ce6b0447efa',
+                          '${WhatsCubit.get(context).userModel!.image}',
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 15.0,
                       ),
                       Expanded(
                         child: Text(
-                          'Mohammed Ashraf',
-                          style:  TextStyle(
+                          '${WhatsCubit.get(context).userModel!.name}',
+                          style:  const TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w700
                           ),
@@ -132,7 +164,7 @@ class CreateStatus extends StatelessWidget {
                     height: 20.0,
                   ),
                   if(WhatsCubit.get(context).statusImage == null)
-                    Spacer(),
+                    const Spacer(),
                   if(WhatsCubit.get(context).statusImage == null)
                     Row(
                     children: [
@@ -170,21 +202,27 @@ class CreateStatus extends StatelessWidget {
             )
                 :Column(
               children: [
+                if(state is SocialCreateStatusLoadingState)
+                  LinearProgressIndicator(color: defaultColor,backgroundColor: defaultColor[100]),
+                if(state is SocialCreateStatusLoadingState)
+                  const SizedBox(
+                  height: 10,
+                ),
                 Row(
-                  children: const [
+                  children:  [
                     CircleAvatar(
                       radius: 25.0,
                       backgroundImage: NetworkImage(
-                        'https://firebasestorage.googleapis.com/v0/b/whatsapp-5d984.appspot.com/o/users%2Fimage_picker5601193744695634156.jpg?alt=media&token=626db624-5231-444d-8384-7ce6b0447efa',
+                        '${WhatsCubit.get(context).userModel!.image}',
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 15.0,
                     ),
                     Expanded(
                       child: Text(
-                        'Mohammed Ashraf',
-                        style:  TextStyle(
+                        WhatsCubit.get(context).userModel!.name!,
+                        style:  const TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.w700
                         ),
@@ -248,7 +286,7 @@ class CreateStatus extends StatelessWidget {
                   height: 20.0,
                 ),
                 if(WhatsCubit.get(context).statusImage == null)
-                  Spacer(),
+                  const Spacer(),
                 if(WhatsCubit.get(context).statusImage == null)
                   Row(
                     children: [

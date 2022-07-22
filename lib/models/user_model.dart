@@ -5,6 +5,7 @@ class UserModel {
   String? email;
   String? image;
   String? bio;
+  DateTime? lastMessageTime;
 
   UserModel({
     this.uId,
@@ -13,6 +14,7 @@ class UserModel {
     this.name,
     this.image,
     this.bio,
+    this.lastMessageTime,
   });
   UserModel.fromJson(Map<String, dynamic> json) {
     email = json['email'];
@@ -21,6 +23,7 @@ class UserModel {
     name = json['name'];
     image = json['image'];
     bio = json['bio'];
+    lastMessageTime = json['lastMassageTime'];
   }
   Map<String, dynamic> toMap() {
     return {
@@ -30,6 +33,11 @@ class UserModel {
       'uId': uId,
       'image': image,
       'bio': bio,
+      'lastMassageTime': lastMessageTime,
     };
   }
+}
+
+class UserField {
+  static const String lastMessageTime = 'lastMessageTime';
 }
