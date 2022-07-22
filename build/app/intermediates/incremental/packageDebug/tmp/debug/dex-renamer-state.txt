@@ -1,9 +1,9 @@
-#Sat May 07 16:57:02 EET 2022
-base.2=E\:\\Flutter 2022\\whats_app\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes3.dex
+#Mon Jul 18 05:15:29 EET 2022
+base.2=D\:\\Aplcation\\whats_app\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes3.dex
 path.2=classes3.dex
-base.1=E\:\\Flutter 2022\\whats_app\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes2.dex
+base.1=D\:\\Aplcation\\whats_app\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes2.dex
 path.1=classes2.dex
-base.0=E\:\\Flutter 2022\\whats_app\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+base.0=D\:\\Aplcation\\whats_app\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 renamed.2=classes3.dex
 renamed.1=classes2.dex
 renamed.0=classes.dex

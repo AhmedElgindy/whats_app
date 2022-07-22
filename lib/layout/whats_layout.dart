@@ -4,7 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:whats_app/layout/cubit/cubit.dart';
 import 'package:whats_app/layout/cubit/states.dart';
+import 'package:whats_app/modules/create_status/create_status.dart';
+import 'package:whats_app/shared/style/colors.dart';
 import 'package:whats_app/shared/style/themes.dart';
+
+import '../modules/edit_profile/edit_profile_screen.dart';
 
 class WhatsLayout extends StatelessWidget {
   const WhatsLayout({Key? key}) : super(key: key);
@@ -77,14 +81,44 @@ class WhatsLayout extends StatelessWidget {
                   'My',
                   style: TextStyle(color: Colors.grey),
                 ),
-                /*  Text(
-                  'Camera',
-                style: TextStyle(
-                    color: Colors.grey
-                ),
-              ),*/
               ],
             ),
+            floatingActionButton: WhatsCubit.get(context).currentIndex == 1
+                ? FloatingActionButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const CreateStatus(),
+                        ),
+                      );
+                    },
+                    backgroundColor: defaultColor,
+                    child: const Icon(
+                      Icons.add,
+                      color: Colors.white,
+                    ),
+                  )
+                : WhatsCubit.get(context).currentIndex == 2
+                    ? FloatingActionButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => EditProfileScreen(),
+                              ));
+                        },
+                        backgroundColor: defaultColor,
+                        child: const Icon(
+                          Icons.edit,
+                          color: Colors.white,
+                        ),
+                      )
+                    : null,
+            floatingActionButtonLocation:
+                WhatsCubit.get(context).currentIndex == 2
+                    ? FloatingActionButtonLocation.centerFloat
+                    : null,
           ),
         );
       },

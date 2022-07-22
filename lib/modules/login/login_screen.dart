@@ -2,14 +2,11 @@ import 'package:buildcondition/buildcondition.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:whats_app/layout/cubit/cubit.dart';
 import 'package:whats_app/modules/login/cubit/cubit.dart';
 import 'package:whats_app/modules/login/cubit/states.dart';
-import 'package:whats_app/shared/components/constants.dart';
 import 'package:whats_app/shared/style/colors.dart';
 import '../../layout/whats_layout.dart';
 import '../../shared/components/components.dart';
-import '../../shared/components/constants.dart';
 import '../../shared/network/local/cache_helper.dart';
 import '../register/register_screen.dart';
 
@@ -17,24 +14,25 @@ class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    var emailController =TextEditingController();
-    var passwordController =TextEditingController();
+    var emailController = TextEditingController();
+    var passwordController = TextEditingController();
     var formKey = GlobalKey<FormState>();
     return BlocProvider(
-      create: (BuildContext context)=>LoginCubit(),
-      child: BlocConsumer<LoginCubit,LoginStates>(
-        listener: (context,state){
-          if(state is WhatsLoginError){
+      create: (BuildContext context) => LoginCubit(),
+      child: BlocConsumer<LoginCubit, LoginStates>(
+        listener: (context, state) {
+          if (state is WhatsLoginError) {
             showToast(txt: state.error, state: ToastState.ERROR);
           }
-          if(state is WhatsLoginSuccess){
+          if (state is WhatsLoginSuccess) {
             CacheHelper.saveData(key: 'uId', value: state.uId).then((value) {
               print(state.uId);
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const WhatsLayout()));
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => const WhatsLayout()));
             });
           }
         },
-        builder: (context,state){
+        builder: (context, state) {
           return Form(
             key: formKey,
             child: Scaffold(
@@ -47,7 +45,7 @@ class LoginScreen extends StatelessWidget {
                     Container(
                       height: 100,
                       width: double.infinity,
-                      decoration:  BoxDecoration(
+                      decoration: BoxDecoration(
                         color: HexColor('#06141A'),
                         borderRadius: const BorderRadius.only(
                           bottomRight: Radius.circular(30),
@@ -57,11 +55,10 @@ class LoginScreen extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 30),
                         child: Row(
-                          children:  [
+                          children: [
                             Container(
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(100)
-                              ),
+                                  borderRadius: BorderRadius.circular(100)),
                               clipBehavior: Clip.antiAliasWithSaveLayer,
                               child: const Image(
                                 image: AssetImage('assets/images/whats.jpg'),
@@ -76,8 +73,7 @@ class LoginScreen extends StatelessWidget {
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 25,
-                                  color: Colors.white
-                              ),
+                                  color: Colors.white),
                             ),
                           ],
                         ),
@@ -88,7 +84,7 @@ class LoginScreen extends StatelessWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children:  const [
+                        children: const [
                           Text(
                             'Welcome On WhatsApp',
                             style: TextStyle(
@@ -115,7 +111,7 @@ class LoginScreen extends StatelessWidget {
                       child: Container(
                         height: 100,
                         width: double.infinity,
-                        decoration:  BoxDecoration(
+                        decoration: BoxDecoration(
                           color: HexColor('#06141A'),
                           borderRadius: const BorderRadius.only(
                             topRight: Radius.circular(30),
@@ -126,17 +122,18 @@ class LoginScreen extends StatelessWidget {
                           child: SingleChildScrollView(
                             physics: const BouncingScrollPhysics(),
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 30),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 30),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                children:  [
+                                children: [
                                   defaultTextFormField(
-                                    controller:emailController ,
+                                    controller: emailController,
                                     hintText: 'Email',
                                     prefixIcon: Icons.phone,
                                     keyboard: TextInputType.emailAddress,
-                                    validator: (String? value){
-                                      if(value!.isEmpty) {
+                                    validator: (String? value) {
+                                      if (value!.isEmpty) {
                                         return 'Email must not be null';
                                       }
                                       return null;
@@ -146,58 +143,59 @@ class LoginScreen extends StatelessWidget {
                                     height: 15,
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 15),
                                     child: TextFormField(
                                       style: const TextStyle(
                                         color: Colors.white,
                                       ),
                                       // textInputAction: TextInputType.visiblePassword,
-                                      decoration:    InputDecoration(
+                                      decoration: InputDecoration(
                                         enabledBorder: const OutlineInputBorder(
-                                          borderSide: BorderSide(color: Colors.grey),
+                                          borderSide:
+                                              BorderSide(color: Colors.grey),
                                         ),
-
                                         focusedBorder: const OutlineInputBorder(
                                             borderSide: BorderSide(
-                                              color: Colors.blue,
-                                            )),
-                                        suffixIcon:IconButton(
-                                          onPressed: (){
-                                            LoginCubit.get(context).showPasswordVisibility();
+                                          color: Colors.blue,
+                                        )),
+                                        suffixIcon: IconButton(
+                                          onPressed: () {
+                                            LoginCubit.get(context)
+                                                .showPasswordVisibility();
                                           },
                                           icon: Icon(
                                             LoginCubit.get(context).suffixIcon,
                                             color: Colors.white,
                                           ),
                                         ),
-                                        prefixIcon:  const Icon(
+                                        prefixIcon: const Icon(
                                           Icons.lock,
                                           color: Colors.white,
                                         ),
                                         border: const OutlineInputBorder(
-                                          borderRadius: BorderRadius.only(
-                                          ),
-                                          borderSide: BorderSide(
-                                              color: Colors.grey
-                                          ),
+                                          borderRadius: BorderRadius.only(),
+                                          borderSide:
+                                              BorderSide(color: Colors.grey),
                                         ),
                                         hintText: 'Password',
                                         hintStyle: const TextStyle(
                                           color: Colors.grey,
                                         ),
                                       ),
-                                      obscureText: LoginCubit.get(context).passwordVisibility,
+                                      obscureText: LoginCubit.get(context)
+                                          .passwordVisibility,
                                       controller: passwordController,
                                       cursorColor: Colors.grey,
                                       validator: (String? value) {
-                                        if(value!.isEmpty) {
+                                        if (value!.isEmpty) {
                                           return 'Password must not be null';
                                         }
                                         return null;
                                       },
-                                      onChanged: (value){
-                                      },
-                                      keyboardType: TextInputType.visiblePassword,
+                                      onChanged: (value) {},
+                                      keyboardType:
+                                          TextInputType.visiblePassword,
                                     ),
                                   ),
                                   /*
@@ -224,48 +222,47 @@ class LoginScreen extends StatelessWidget {
                                   ),
                                   BuildCondition(
                                     condition: state is! WhatsLoginLoading,
-                                    builder: (context)=>MaterialButton(
+                                    builder: (context) => MaterialButton(
                                       color: Colors.green,
-                                      onPressed: (){
-                                        if(formKey.currentState!.validate()) {
+                                      onPressed: () {
+                                        if (formKey.currentState!.validate()) {
                                           LoginCubit.get(context).userLogin(
                                               email: emailController.text,
-                                              password: passwordController.text
-                                          );
+                                              password:
+                                                  passwordController.text);
                                         }
                                       },
                                       child: const Text(
                                         'Go',
                                         style: TextStyle(
                                             color: Colors.white,
-                                            fontWeight: FontWeight.bold
-                                        ),
+                                            fontWeight: FontWeight.bold),
                                       ),
                                     ),
-                                    fallback: (context)=>const Center(child: CircularProgressIndicator(color: defaultColor,)),
+                                    fallback: (context) => const Center(
+                                        child: CircularProgressIndicator(
+                                      color: defaultColor,
+                                    )),
                                   ),
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       const Text(
                                         'Don\'t Have Account?',
-                                        style: TextStyle(
-                                            color: Colors.grey
-                                        ),
+                                        style: TextStyle(color: Colors.grey),
                                       ),
                                       TextButton(
-                                        onPressed: (){
+                                        onPressed: () {
                                           Navigator.push(
                                             context,
                                             MaterialPageRoute(
-                                                builder: (context)=>RegisterScreen()
-                                            ),
+                                                builder: (context) =>
+                                                    RegisterScreen()),
                                           );
                                         },
                                         child: const Text(
                                           'Register Now',
-                                          style: TextStyle(
-                                          ),
+                                          style: TextStyle(),
                                         ),
                                       ),
                                     ],
