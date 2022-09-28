@@ -11,12 +11,14 @@ import '../../shared/style/colors.dart';
 
 UserModel? usermodel;
 
+// ignore: must_be_immutable
 class ChatContentScreen extends StatelessWidget {
   UserModel userModel;
   ChatContentScreen({
     Key? key,
     required this.userModel,
   }) : super(key: key);
+  // ignore: non_constant_identifier_names
   var MessageController = TextEditingController();
   @override
   Widget build(BuildContext context) {

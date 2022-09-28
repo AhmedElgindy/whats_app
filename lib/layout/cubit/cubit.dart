@@ -24,10 +24,10 @@ class WhatsCubit extends Cubit<WhatsStates> {
     emit(ChangeBottomNav());
   }
 
-  List<Widget> screen = const [
-    ChatsScreen(),
-    StatusScreen(),
-    ProfileScreen(),
+  List<Widget> screen = [
+    const ChatsScreen(),
+    const StatusScreen(),
+    const ProfileScreen(),
   ];
 
   // GetUserData
@@ -189,9 +189,9 @@ class WhatsCubit extends Cubit<WhatsStates> {
   void getStatus() {
     //  emit(SocialGetStatusLoadingState());
     FirebaseFirestore.instance.collection('status').get().then((value) {
-      value.docs.forEach((element) {
+      for (var element in value.docs) {
         status.add(StatusModel.fromJson(element.data()));
-      });
+      }
       emit(SocialGetStatusSuccessState());
     }).catchError((error) {
       print(error.toString());
@@ -203,9 +203,9 @@ class WhatsCubit extends Cubit<WhatsStates> {
   List<UserModel> users = [];
   void getUsers() {
     FirebaseFirestore.instance.collection('users').get().then((value) {
-      value.docs.forEach((element) {
+      for (var element in value.docs) {
         users.add(UserModel.fromJson(element.data()));
-      });
+      }
       emit(SocialGetAllUserSuccess());
     }).catchError((error) {
       print(error.toString());
@@ -264,9 +264,9 @@ class WhatsCubit extends Cubit<WhatsStates> {
         .snapshots()
         .listen((event) {
       messages = [];
-      event.docs.forEach((element) {
+      for (var element in event.docs) {
         messages.add(MessageModel.fromJson(element.data()));
-      });
+      }
       emit(SocialSuccessGetMessage());
     });
   }

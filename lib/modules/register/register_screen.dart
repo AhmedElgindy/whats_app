@@ -1,9 +1,7 @@
 import 'package:buildcondition/buildcondition.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:whats_app/layout/cubit/cubit.dart';
 import 'package:whats_app/modules/register/cubit/cubit.dart';
 import 'package:whats_app/modules/register/cubit/states.dart';
 import 'package:whats_app/shared/style/colors.dart';
@@ -13,6 +11,8 @@ import '../../shared/components/components.dart';
 import '../../shared/network/local/cache_helper.dart';
 
 class RegisterScreen extends StatelessWidget {
+  const RegisterScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     var phoneController = TextEditingController();
@@ -257,12 +257,16 @@ class RegisterScreen extends StatelessWidget {
                                   ),
                                   BuildCondition(
                                     condition: state is! WhatsRegisterLoading,
-                                    fallback: (context)=>const Center(child: CircularProgressIndicator(color: defaultColor,)),
-                                    builder: (context)=>MaterialButton(
+                                    fallback: (context) => const Center(
+                                        child: CircularProgressIndicator(
+                                      color: defaultColor,
+                                    )),
+                                    builder: (context) => MaterialButton(
                                       color: Colors.green,
                                       onPressed: () {
                                         if (formKey.currentState!.validate()) {
-                                          RegisterCubit.get(context).userRegister(
+                                          RegisterCubit.get(context)
+                                              .userRegister(
                                             name: nameController.text,
                                             email: emailController.text,
                                             password: passwordController.text,

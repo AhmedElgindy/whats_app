@@ -5,37 +5,39 @@ import 'package:whats_app/layout/cubit/states.dart';
 
 import '../../shared/style/colors.dart';
 
+// ignore: must_be_immutable
 class StatusDetails extends StatelessWidget {
-   String text;
-   String image;
-   String imageStatus;
-   String name;
-   String dateTime;
-   String time;
- StatusDetails({Key? key,
-     required this.text,
-     required this.image,
-     required this.name,
-     required this.imageStatus,
-   required this.dateTime,
-   required this.time
-}) : super(key: key) ;
+  String text;
+  String image;
+  String imageStatus;
+  String name;
+  String dateTime;
+  String time;
+  StatusDetails(
+      {Key? key,
+      required this.text,
+      required this.image,
+      required this.name,
+      required this.imageStatus,
+      required this.dateTime,
+      required this.time})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<WhatsCubit,WhatsStates>(
-      listener: (context,state){},
-      builder: (context,state){
+    return BlocConsumer<WhatsCubit, WhatsStates>(
+      listener: (context, state) {},
+      builder: (context, state) {
         return Scaffold(
           body: SafeArea(
             child: Padding(
-              padding: const EdgeInsets.only(top: 5,bottom: 10),
+              padding: const EdgeInsets.only(top: 5, bottom: 10),
               child: Column(
                 children: [
                   Row(
                     children: [
                       IconButton(
-                        onPressed: (){
+                        onPressed: () {
                           Navigator.pop(context);
                         },
                         icon: Icon(
@@ -43,7 +45,7 @@ class StatusDetails extends StatelessWidget {
                           color: defaultColor.withOpacity(0.5),
                         ),
                       ),
-                       CircleAvatar(
+                      CircleAvatar(
                         radius: 20,
                         backgroundImage: NetworkImage(
                           image,
@@ -54,7 +56,7 @@ class StatusDetails extends StatelessWidget {
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children:   [
+                        children: [
                           Text(
                             name,
                             style: const TextStyle(
@@ -81,25 +83,23 @@ class StatusDetails extends StatelessWidget {
                   Expanded(
                     child: Stack(
                       alignment: Alignment.bottomCenter,
-                      children:  [
-                       Image(
-                          image: NetworkImage(
-                            imageStatus,
-                          ),
-                          fit: BoxFit.contain,
-                          width: double.infinity,
-                          height: double.infinity
-                      ),
-
+                      children: [
+                        Image(
+                            image: NetworkImage(
+                              imageStatus,
+                            ),
+                            fit: BoxFit.contain,
+                            width: double.infinity,
+                            height: double.infinity),
                         Container(
                           // alignment: Alignment.center,
                           padding: const EdgeInsets.only(bottom: 50),
                           width: double.infinity,
                           alignment: Alignment.bottomCenter,
                           color: Colors.black26,
-                          child:  Text(
+                          child: Text(
                             text,
-                            textAlign:TextAlign.center ,
+                            textAlign: TextAlign.center,
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 17,

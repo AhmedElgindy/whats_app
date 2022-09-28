@@ -1,35 +1,36 @@
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 Widget defaultTextFormField({
   required TextEditingController controller,
-   required String hintText,
+  required String hintText,
   IconData? prefixIcon,
-  IconData? suffixIcon ,
+  IconData? suffixIcon,
   required TextInputType keyboard,
   bool security = false,
   required Function validator,
   Function? suffixPressed,
-}){
-  return  Padding(
+}) {
+  return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 15),
     child: TextFormField(
       style: const TextStyle(
         color: Colors.white,
       ),
-      decoration:    InputDecoration(
+      decoration: InputDecoration(
         enabledBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.grey,),
-
+          borderSide: BorderSide(
+            color: Colors.grey,
+          ),
         ),
-
         focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(
-              color: Colors.blue,
-            )),
-        suffixIcon:IconButton(
-          onPressed: (){
+          color: Colors.blue,
+        )),
+        suffixIcon: IconButton(
+          onPressed: () {
             suffixPressed!();
           },
           icon: Icon(
@@ -37,16 +38,13 @@ Widget defaultTextFormField({
             color: Colors.white,
           ),
         ),
-        prefixIcon:  Icon(
+        prefixIcon: Icon(
           prefixIcon,
           color: Colors.white,
         ),
         border: const OutlineInputBorder(
-          borderRadius: BorderRadius.only(
-          ),
-          borderSide: BorderSide(
-              color: Colors.grey
-          ),
+          borderRadius: BorderRadius.only(),
+          borderSide: BorderSide(color: Colors.grey),
         ),
         hintText: hintText,
         hintStyle: const TextStyle(
@@ -58,6 +56,7 @@ Widget defaultTextFormField({
       cursorColor: Colors.grey,
       validator: (value) {
         validator(value);
+        return null;
       },
       keyboardType: keyboard,
     ),

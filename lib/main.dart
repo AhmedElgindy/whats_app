@@ -30,7 +30,8 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   final Widget startWidget;
-  MyApp({
+  // ignore: use_key_in_widget_constructors
+  const MyApp({
     required this.startWidget,
   });
   @override
